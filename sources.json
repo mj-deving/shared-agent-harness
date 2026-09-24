@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "sources": {
+    "agent-skills": {
+      "url": "https://github.com/mj-deving/agent-skills.git",
+      "revision": "7d4d219626c46d3c1d664a5a3e2206ed2cfd623e",
+      "upstream": "https://github.com/openclaw/agent-skills",
+      "license": "MIT"
+    },
+    "lifeos": {
+      "url": "https://github.com/danielmiessler/LifeOS.git",
+      "revision": "be9e8ef889f00a29f4fd677dee4772fdf32e07ce",
+      "license": "MIT"
+    },
+    "agent-scripts": {
+      "url": "https://github.com/steipete/agent-scripts.git",
+      "revision": "c46ea65b6323e8a2b6f441f8b6449ae731bc8f81",
+      "license": "MIT"
+    }
+  },
+  "skills": {
+    "cmux-orchestrate": {
+      "owner": "shared-agent-harness",
+      "path": "skills/cmux-orchestrate"
+    },
+    "autoreview": {
+      "owner": "agent-skills",
+      "path": "skills/autoreview"
+    },
+    "behavior-validator": {
+      "owner": "agent-skills",
+      "path": "skills/behavior-validator"
+    },
+    "handoff": {
+      "owner": "agent-skills",
+      "path": "skills/handoff"
+    },
+    "session-viewer": {
+      "owner": "agent-skills",
+      "path": "skills/session-viewer"
+    },
+    "github-public-writing": {
+      "owner": "agent-skills",
+      "path": "skills/github-public-writing"
+    },
+    "govern-agent-context": {
+      "owner": "agent-skills",
+      "path": "skills/govern-agent-context"
+    },
+    "govern-agent-stack": {
+      "owner": "agent-skills",
+      "path": "skills/govern-agent-stack"
+    },
+    "govern-shared-skills": {
+      "owner": "agent-skills",
+      "path": "skills/govern-shared-skills"
+    },
+    "lifeos": {
+      "owner": "shared-agent-harness",
+      "path": "skills/lifeos",
+      "requires": [
+        "lifeos"
+      ]
+    },
+    "agent-scripts": {
+      "owner": "shared-agent-harness",
+      "path": "skills/agent-scripts",
+      "requires": [
+        "agent-scripts"
+      ]
+    }
+  },
+  "catalog": {
+    "lifeos": {
+      "FirstPrinciples": "LifeOS/install/skills/FirstPrinciples",
+      "SystemsThinking": "LifeOS/install/skills/SystemsThinking",
+      "Science": "LifeOS/install/skills/Science",
+      "Research": "LifeOS/install/skills/Research",
+      "Council": "LifeOS/install/skills/Council",
+      "RedTeam": "LifeOS/install/skills/RedTeam",
+      "ExtractWisdom": "LifeOS/install/skills/ExtractWisdom",
+      "ISA": "LifeOS/install/skills/ISA"
+    },
+    "agent-scripts": {
+      "github-deep-review": "skills/github-deep-review",
+      "video-transcript-downloader": "skills/video-transcript-downloader",
+      "instruments-profiling": "skills/instruments-profiling"
+    }
+  },
+  "profiles": {
+    "minimal": [
+      "cmux-orchestrate"
+    ],
+    "core": [
+      "cmux-orchestrate",
+      "autoreview",
+      "behavior-validator",
+      "handoff"
+    ],
+    "curated": [
+      "cmux-orchestrate",
+      "autoreview",
+      "behavior-validator",
+      "handoff",
+      "session-viewer",
+      "github-public-writing",
+      "govern-agent-context",
+      "govern-agent-stack",
+      "govern-shared-skills",
+      "lifeos",
+      "agent-scripts"
+    ]
+  }
+}
