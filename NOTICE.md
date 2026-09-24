@@ -43,3 +43,16 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## Additional sources in the extended selection
+
+- [Graph Climbing](https://github.com/mj-deving/graph-climbing), `192d7785fc969c1f69634927a23bd2433715b23b`, MIT.
+- [Humanizer integration fork](https://github.com/mj-deving/humanizer), `d4fed7bd33a1bb59d2ca4f3a27816ec17b7d4ee6`, MIT; retains its upstream attribution.
+- [Waza](https://github.com/tw93/Waza), `663f27eb136118c0a3aa78b5ce9e712b7aee7f0a`: optional native/vendor-owned suite.
+- [GStack](https://github.com/garrytan/gstack), `0d1bd5616c0ef096bb7ccee336f63c60ee408618`: optional vendor-owned suite.
+- [Impeccable](https://github.com/pbakaus/impeccable), `f2c7051853848826aac2f4646581d62a732155ad`: optional vendor-owned suite, Apache-2.0.
+- [Watch / claude-video](https://github.com/bradautomates/claude-video), `83da59fa78c3eee9e20f515fe75c438bb5166efd`: optional upstream skill, MIT.
+
+No code or skill bodies from the four optional suites are redistributed here. Their reviewed pins
+identify the catalog snapshot; their native installers may install newer releases. Check the
+version and license selected by that installer before adopting it.

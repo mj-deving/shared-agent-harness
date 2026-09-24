@@ -189,6 +189,9 @@ def run(args):
         for action, destination, source_path, _ in actions:
             print(f'{action.upper()} {destination} -> {source_path}')
         print(f'Planned: {len(missing_sources)} source fetches, {len(actions)} link changes')
+        if args.profile == 'extended' and not args.skills and not args.uninstall:
+            print('Extended profile: 26 capabilities through 13 skill folders. '
+                  'The other 14 catalog capabilities use their own installers; see docs/optional-suites.md.')
         if not args.apply:
             return 1 if args.check and (actions or missing_sources) else 0
         for path, source in missing_sources.values():
@@ -235,7 +238,7 @@ def main():
     modes.add_argument('--check', action='store_true', help='read-only; exit 1 if work remains')
     parser.add_argument('--uninstall', action='store_true', help='remove selected owned links; keep sources')
     parser.add_argument('--list', action='store_true', help='list installer-supported skills')
-    parser.add_argument('--profile', choices=['minimal', 'core', 'curated'], default='minimal')
+    parser.add_argument('--profile', choices=['minimal', 'core', 'curated', 'extended'], default='minimal')
     parser.add_argument('--skills', nargs='+', help='default: cmux-orchestrate')
     parser.add_argument('--harness', nargs='+', choices=['claude', 'codex'], default=['claude', 'codex'])
     parser.add_argument('--home', default=str(Path.home()), help='alternate home for isolated testing')

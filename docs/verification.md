@@ -1,6 +1,6 @@
 # Verification
 
-Initial candidate checked on macOS, 2026-09-24.
+Initial v0.1.0 candidate checked on macOS, 2026-09-24.
 
 ## Observed
 
@@ -33,3 +33,20 @@ writable work. Verify the effective model and permissions through the provider's
 
 No real user loader, existing agent session, account, permission policy, or production system
 was changed for the installer tests. Temporary cmux workspaces were closed by exact identity.
+
+## v0.2.0 expanded selection
+
+- The catalog now covers 40 capabilities: 26 through the extended installer and 14 optional
+  native/vendor workflows. The latter are provenance entries, not installed-state claims.
+- All 14 installer tests still pass. An isolated extended installation reused three verified
+  source checkouts, downloaded the exact Graph Climbing and Humanizer pins and created 26 links.
+  Its next check reported zero downloads and zero link changes.
+- All 15 routed LifeOS/agent-scripts entrypoints resolve. The four added LifeOS skills are BPE,
+  Evals, IterativeDepth and BeCreative.
+- The pinned Evals deterministic assertion self-test passed 16/16 cases under Bun. No model
+  inference, model judge or multi-turn agent evaluation was run; those require their own setup.
+- Waza is documented as a standalone official plugin. GStack, Impeccable and Watch keep their
+  owner installers. No native suite, provider account or real user skill loader was changed.
+
+This extends the installation and source-resolution proof. It does not establish full execution
+of all 40 workflows or runtime discovery in every harness.

@@ -1,6 +1,17 @@
-# Twenty selected capabilities
+# Forty selected capabilities
 
-The first nine are direct skills. The other eleven are loaded through two routers: 20 capabilities, 11 installed skill folders per harness. This is a curated selection, not a usage-frequency ranking.
+A selection across the full working stack, not just LifeOS and not a usage-frequency ranking.
+
+| Group | Capabilities | Install mode |
+|---|---:|---|
+| Shared/CMUX + LifeOS + agent-scripts | 24 | `--profile curated` |
+| Graph Climbing + Humanizer | 2 | Added by `--profile extended` |
+| Waza | 8 | Native/vendor installer |
+| GStack | 4 | Vendor build and harness projections |
+| Impeccable + Watch | 2 | Native/vendor installer |
+| **Total** | **40** | **26 through this installer; 14 opt-in through their owners** |
+
+The LifeOS selection includes BPE, Evals and ten thinking/research/specification workflows. The extended profile exposes 26 capabilities through 13 skill folders per harness. Optional suites may install more modules than our selected shortlist. All sources retain their ownership and license.
 
 ## Shared foundation
 
@@ -30,6 +41,10 @@ Install the `lifeos` router or use `--profile curated`. Use it by name, for exam
 | 15 | [RedTeam](https://github.com/danielmiessler/LifeOS/tree/be9e8ef889f00a29f4fd677dee4772fdf32e07ce/LifeOS/install/skills/RedTeam) | Stress-test a proposal against concrete objections. |
 | 16 | [ExtractWisdom](https://github.com/danielmiessler/LifeOS/tree/be9e8ef889f00a29f4fd677dee4772fdf32e07ce/LifeOS/install/skills/ExtractWisdom) | Extract useful ideas from accessible articles, talks or transcripts. |
 | 17 | [ISA](https://github.com/danielmiessler/LifeOS/tree/be9e8ef889f00a29f4fd677dee4772fdf32e07ce/LifeOS/install/skills/ISA) | State the desired outcome with verifiable criteria; runtime synchronization is separate. |
+| 18 | [BitterPillEngineering / BPE](https://github.com/danielmiessler/LifeOS/tree/be9e8ef889f00a29f4fd677dee4772fdf32e07ce/LifeOS/install/skills/BitterPillEngineering) | Audit over-prompting and redundant rules; preserve safety and verified tool contracts. |
+| 19 | [Evals](https://github.com/danielmiessler/LifeOS/tree/be9e8ef889f00a29f4fd677dee4772fdf32e07ce/LifeOS/install/skills/Evals) | Design assertion-first suites and judge criteria; execution needs Bun, the appropriate inference/runtime setup and an authorized trial budget. |
+| 20 | [IterativeDepth](https://github.com/danielmiessler/LifeOS/tree/be9e8ef889f00a29f4fd677dee4772fdf32e07ce/LifeOS/install/skills/IterativeDepth) | Explore a question through several lenses to uncover missing requirements. |
+| 21 | [BeCreative](https://github.com/danielmiessler/LifeOS/tree/be9e8ef889f00a29f4fd677dee4772fdf32e07ce/LifeOS/install/skills/BeCreative) | Generate diverse ideas, alternatives and test examples. |
 
 ## Agent Scripts
 
@@ -37,10 +52,58 @@ Install the `agent-scripts` router or use `--profile curated`. Each leaf retains
 
 | # | Workflow | Use |
 |---|---|---|
-| 18 | [github-deep-review](https://github.com/steipete/agent-scripts/tree/c46ea65b6323e8a2b6f441f8b6449ae731bc8f81/skills/github-deep-review) | Trace a GitHub issue or PR through code and evidence; requires Git/gh. |
-| 19 | [video-transcript-downloader](https://github.com/steipete/agent-scripts/tree/c46ea65b6323e8a2b6f441f8b6449ae731bc8f81/skills/video-transcript-downloader) | Download transcripts/media where permitted; requires the leaf’s media tooling. |
-| 20 | [instruments-profiling](https://github.com/steipete/agent-scripts/tree/c46ea65b6323e8a2b6f441f8b6449ae731bc8f81/skills/instruments-profiling) | Measure macOS performance with Instruments; requires Xcode tools. |
+| 22 | [github-deep-review](https://github.com/steipete/agent-scripts/tree/c46ea65b6323e8a2b6f441f8b6449ae731bc8f81/skills/github-deep-review) | Trace a GitHub issue or PR through code and evidence; requires Git/gh. |
+| 23 | [video-transcript-downloader](https://github.com/steipete/agent-scripts/tree/c46ea65b6323e8a2b6f441f8b6449ae731bc8f81/skills/video-transcript-downloader) | Download transcripts/media where permitted; requires the leaf’s media tooling. |
+| 24 | [instruments-profiling](https://github.com/steipete/agent-scripts/tree/c46ea65b6323e8a2b6f441f8b6449ae731bc8f81/skills/instruments-profiling) | Measure macOS performance with Instruments; requires Xcode tools. |
+
+## More shared skills
+
+| # | Skill | Why it is here | Dependencies / limits |
+|---|---|---|---|
+| 25 | [Graph Climbing](https://github.com/mj-deving/graph-climbing/tree/192d7785fc969c1f69634927a23bd2433715b23b/adapters/graph-climbing-skill) | Coordinate durable work, claims, evidence and safe parallelism. | Reuses the project's spec/ledger; optional TypeScript checkers require their documented runtime. |
+| 26 | [Humanizer](https://github.com/mj-deving/humanizer/tree/d4fed7bd33a1bb59d2ca4f3a27816ec17b7d4ee6) | Edit prose for natural language while preserving facts. | Shared source; no API or service required for the instruction workflow. |
+
+## Waza: focused daily workflows
+
+Keep Waza as its own official plugin. Use the [Waza owner setup](optional-suites.md#waza). These are alternatives or complements to the existing workflows, not instructions to run every review tool on every task.
+
+| # | Skill | Use |
+|---|---|---|
+| 27 | think | Turn a rough idea into a concrete plan. |
+| 28 | hunt | Find a bug's root cause before changing code. |
+| 29 | check | Review code and release readiness. |
+| 30 | health | Audit agent instructions, hooks and verifier coverage. |
+| 31 | learn | Research and synthesize unfamiliar material. |
+| 32 | read | Read URLs and PDFs into usable source material. |
+| 33 | write | Draft, rewrite and polish prose. |
+| 34 | ui | Build and refine interfaces. |
+
+Source: [Waza at the reviewed revision](https://github.com/tw93/Waza/tree/663f27eb136118c0a3aa78b5ce9e712b7aee7f0a/skills).
+
+## GStack: deeper product and engineering workflows
+
+Use the [GStack owner setup](optional-suites.md#gstack). Its runtime and generated harness outputs are part of the capability; copying a leaf's Markdown alone is insufficient.
+
+| # | Module | Use |
+|---|---|---|
+| 35 | plan-ceo-review | Challenge product scope and value. |
+| 36 | plan-eng-review | Review architecture and implementation plans. |
+| 37 | qa | Exercise a running site through the browser. |
+| 38 | ship | Prepare and execute an authorized shipping workflow. |
+
+Source: [GStack at the reviewed revision](https://github.com/garrytan/gstack/tree/0d1bd5616c0ef096bb7ccee336f63c60ee408618).
+
+## Design and video
+
+| # | Skill | Use | Setup |
+|---|---|---|---|
+| 39 | Impeccable | Design direction, critique, accessibility and interface polish. | [Vendor-generated harness builds](optional-suites.md#impeccable) |
+| 40 | Watch | Inspect video frames and transcripts with timestamps. | [Upstream video skill](optional-suites.md#watch); media tools and optional transcription credentials are separate. |
+
+## Pick by job
+
+Start with CMUX, handoff, autoreview and behavior-validator. Add Graph Climbing for durable multi-session work. Choose Waza for focused planning/debugging/writing; use GStack when its deeper product/browser/release workflow fits. Use Impeccable for interface design and Watch for recordings. These overlap intentionally; choose one primary workflow for a task instead of stacking all of them.
 
 ## Why not everything?
 
-Private skill suites, credential adapters, account connectors, personal memory, host inventories and provider-managed plugins are outside this starter. Beads and the full LifeOS Algorithm remain optional project/runtime choices; they are not silently installed or replaced. Add capabilities when someone in the working group has a concrete use and can verify them.
+Private skills, credential brokers, personal memory and machine inventories are not portable defaults. Provider-managed browser/document/security plugins remain outside this release because their availability and permissions belong to each user's installation. The shortlist can grow from working-group usage; a larger catalog is not automatically a better starting configuration.

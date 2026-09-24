@@ -1,6 +1,6 @@
 ---
 name: lifeos
-description: "Route eight shared LifeOS workflows: FirstPrinciples for assumptions, SystemsThinking for feedback loops, Science for experiments, Research for source synthesis, Council for debate, RedTeam for adversarial critique, ExtractWisdom for takeaways, and ISA for verifiable desired outcomes. Not the full LifeOS runtime installer."
+description: "Route shared LifeOS workflows: FirstPrinciples for assumptions, SystemsThinking for feedback loops, Science for experiments, Research for source synthesis, Council for debate, RedTeam for adversarial critique, ExtractWisdom for takeaways, ISA for verifiable outcomes, BitterPillEngineering/BPE for instruction audits, Evals for assertion-first evaluation, IterativeDepth for multi-angle exploration, and BeCreative for ideation. Not the full LifeOS runtime installer."
 ---
 
 # Shared LifeOS router
@@ -50,3 +50,19 @@ If LifeOS already owns a selected skill natively, use that owner rather than add
 workflow. Install only the starter pieces you lack. The curated starter source is an immutable
 public checkout; it is not a deployed LifeOS runtime. The full architecture and migration choices
 are described in the starter's `docs/architecture.md`.
+
+## Additional workflow boundaries
+
+- BitterPillEngineering (BPE): audit the requested instructions first and propose removals.
+  Do not remove permission boundaries, verified tool contracts or safeguards just to reduce tokens.
+  Its optional drift-lint helper requires the documented Bun/runtime setup; a manual audit can
+  proceed without falsely claiming that helper ran.
+- Evals: distinguish designing a suite, running deterministic assertions, single-shot inference,
+  and a real multi-turn agent evaluation. The source runner's dependencies, inference adapter,
+  output location and model/judge configuration must be checked before executing. Run only within
+  an explicitly authorized trial count and cost boundary. Do not use the vendor's billing labels
+  as a guarantee for the user's provider. Never report a prompt-only test as end-to-end agent proof.
+- IterativeDepth: bind the question and pass budget. Propose newly discovered criteria to the
+  owning project rather than silently widening an implementation task.
+- BeCreative: use the selected workflow's ideation technique without silently changing the model
+  or purchasing external inference. The Gemini-specific workflow requires that provider separately.

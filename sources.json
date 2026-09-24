@@ -16,6 +16,17 @@
       "url": "https://github.com/steipete/agent-scripts.git",
       "revision": "c46ea65b6323e8a2b6f441f8b6449ae731bc8f81",
       "license": "MIT"
+    },
+    "graph-climbing": {
+      "url": "https://github.com/mj-deving/graph-climbing.git",
+      "revision": "192d7785fc969c1f69634927a23bd2433715b23b",
+      "license": "MIT"
+    },
+    "humanizer": {
+      "url": "https://github.com/mj-deving/humanizer.git",
+      "revision": "d4fed7bd33a1bb59d2ca4f3a27816ec17b7d4ee6",
+      "upstream": "https://github.com/jooray/humanizer",
+      "license": "MIT"
     }
   },
   "skills": {
@@ -68,6 +79,14 @@
       "requires": [
         "agent-scripts"
       ]
+    },
+    "graph-climbing": {
+      "owner": "graph-climbing",
+      "path": "adapters/graph-climbing-skill"
+    },
+    "humanizer": {
+      "owner": "humanizer",
+      "path": "."
     }
   },
   "catalog": {
@@ -79,7 +98,11 @@
       "Council": "LifeOS/install/skills/Council",
       "RedTeam": "LifeOS/install/skills/RedTeam",
       "ExtractWisdom": "LifeOS/install/skills/ExtractWisdom",
-      "ISA": "LifeOS/install/skills/ISA"
+      "ISA": "LifeOS/install/skills/ISA",
+      "BitterPillEngineering": "LifeOS/install/skills/BitterPillEngineering",
+      "Evals": "LifeOS/install/skills/Evals",
+      "IterativeDepth": "LifeOS/install/skills/IterativeDepth",
+      "BeCreative": "LifeOS/install/skills/BeCreative"
     },
     "agent-scripts": {
       "github-deep-review": "skills/github-deep-review",
@@ -109,6 +132,69 @@
       "govern-shared-skills",
       "lifeos",
       "agent-scripts"
+    ],
+    "extended": [
+      "cmux-orchestrate",
+      "autoreview",
+      "behavior-validator",
+      "handoff",
+      "session-viewer",
+      "github-public-writing",
+      "govern-agent-context",
+      "govern-agent-stack",
+      "govern-shared-skills",
+      "lifeos",
+      "agent-scripts",
+      "graph-climbing",
+      "humanizer"
     ]
+  },
+  "external_suites": {
+    "waza": {
+      "url": "https://github.com/tw93/Waza",
+      "revision": "663f27eb136118c0a3aa78b5ce9e712b7aee7f0a",
+      "mode": "native-owner",
+      "capabilities": [
+        "think",
+        "hunt",
+        "check",
+        "health",
+        "learn",
+        "read",
+        "write",
+        "ui"
+      ],
+      "setup": "docs/optional-suites.md#waza"
+    },
+    "gstack": {
+      "url": "https://github.com/garrytan/gstack",
+      "revision": "0d1bd5616c0ef096bb7ccee336f63c60ee408618",
+      "mode": "vendor-build",
+      "capabilities": [
+        "plan-ceo-review",
+        "plan-eng-review",
+        "qa",
+        "ship"
+      ],
+      "setup": "docs/optional-suites.md#gstack"
+    },
+    "impeccable": {
+      "url": "https://github.com/pbakaus/impeccable",
+      "revision": "f2c7051853848826aac2f4646581d62a732155ad",
+      "mode": "vendor-build",
+      "capabilities": [
+        "impeccable"
+      ],
+      "setup": "docs/optional-suites.md#impeccable"
+    },
+    "watch": {
+      "url": "https://github.com/bradautomates/claude-video",
+      "revision": "83da59fa78c3eee9e20f515fe75c438bb5166efd",
+      "mode": "native-owner",
+      "capabilities": [
+        "watch"
+      ],
+      "setup": "docs/optional-suites.md#watch"
+    }
   }
 }

@@ -5,10 +5,10 @@ in the same repository, or pretend Claude and Codex have identical runtimes.
 
 | Layer | Original architecture | Minimum starter |
 |---|---|---|
-| Canonical owners | Shared skills, LifeOS, vendor scripts, project skills, native plugins | Three pinned public sources plus this repo's adapter owner |
+| Canonical owners | Shared skills, LifeOS, vendor scripts, project skills, native plugins | Five pinned public sources plus this repo's adapter owner; four optional native/vendor suites |
 | Registry | Source pins, admissions, target harnesses, adapters, conflicts | `sources.json`: owners, immutable pins, selected skills, profiles and routed catalogs |
 | Shared projections | Individual symlinks into Claude/Codex loaders | Same pattern; preview/apply/check/uninstall with an ownership receipt |
-| Vendor routing | Compact routers with lazy loading and generated discovery metadata | Two compact routers whose descriptions name all 11 admitted vendor leaves |
+| Vendor routing | Compact routers with lazy loading and generated discovery metadata | Two compact routers whose descriptions name all 15 admitted vendor leaves |
 | LifeOS | Claude-native deployment; Codex router and Algorithm/ISA adapters | Both harnesses use a small explicit translation over pinned source workflows |
 | CMUX | LifeOS CMUX skill plus a runtime overlay | Standalone `cmux-orchestrate` adapter preserving the control/verification rules |
 | Shared instructions | Small startup routes; load detailed doctrine on demand | Optional project routing snippet, merged by the project owner |
@@ -45,7 +45,7 @@ This is a functional starter for shared skills and terminal orchestration, not a
 complete replica of the author's machine. The original registry is larger, uses Bun, and also
 owns generated indexes and native runtime integration. This installer uses Python's standard
 library and two bounded catalog routers; there is no need to install that infrastructure to
-share 20 capabilities.
+share a compact core.
 
 Codex's documented personal skill directory is `.agents/skills`; older installations also use
 `.codex/skills`. This starter defaults to the current documented location, supports explicit
@@ -75,3 +75,15 @@ its router description and catalog together so the new intent is discoverable. F
 verify its actual loader and runtime semantics before adding a target. Plugin-managed skills
 stay with the plugin manager. Account/host names and credentials belong to the consumer's
 configuration, never to a shared skill body.
+
+## Broader selection
+
+The 40-capability catalog separates 26 installer-managed capabilities from 14 selected workflows
+managed by four native/vendor suites. `sources.json` records the latter under `external_suites`,
+including the reviewed public revision and setup guide. These entries are provenance references,
+not installed-state receipts. `--check` does not audit those external installations.
+
+This mirrors the original ownership distinction: compatible skills share a body; Waza can remain
+plugin-owned; GStack and Impeccable retain their generators and runtime assets; Watch retains its
+media dependencies. The author's private cross-harness overlays are not exported. Users keep
+existing suite owners or opt into their official setup, without a second competing projection.

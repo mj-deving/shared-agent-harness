@@ -68,15 +68,30 @@ The source binding is remembered for later checks. The checkout must be clean an
 manifest pin. This tool will not modify that checkout or take ownership of existing skill links.
 If another registry already manages a skill, use that registry instead.
 
-[The curated catalog](docs/catalog.md) has 20 capabilities: nine directly linked skills, eight
-LifeOS workflows and three agent-scripts workflows. The latter eleven are exposed through two
-small routers, keeping their upstream bodies in one place. Install the selection with:
+[The full catalog](docs/catalog.md) covers **40 capabilities across nine sources**: shared skills,
+LifeOS, agent-scripts, Graph Climbing, Humanizer, Waza, GStack, Impeccable and Watch.
+
+The `curated` profile installs 24 capabilities: nine direct skills plus fifteen workflows
+behind two routers. Install that compact selection with:
 
 ```sh
 python3 install.py --profile curated
 python3 install.py --profile curated --apply
 python3 install.py --profile curated --check
 ```
+
+For the broader shared selection, `--profile extended` adds Graph Climbing and Humanizer:
+
+```sh
+python3 install.py --profile extended
+python3 install.py --profile extended --apply
+python3 install.py --profile extended --check
+```
+
+That installs **26 capabilities through 13 skill folders**, not all 40. The remaining 14 are
+selected workflows in Waza, GStack, Impeccable and Watch. Use their [owner installation routes](docs/optional-suites.md):
+they have native plugins, generated builds or additional runtime dependencies. The starter
+records their provenance but does not silently run their installers or claim to manage them.
 
 `--profile core` selects CMUX, autoreview, behavior-validator and handoff. Profiles add their
 selection; switching profiles does not silently remove previously installed skills. Use explicit
