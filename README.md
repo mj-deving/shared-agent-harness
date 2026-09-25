@@ -18,21 +18,26 @@ One canonical skill folder ──┬── Claude's personal skill link
 
 ## Start with CMUX
 
-You need Python 3.10+, Git, [cmux for macOS](https://cmux.com/docs/getting-started),
+You need Python 3.10+, Git, Bun, [cmux for macOS](https://cmux.com/docs/getting-started),
 and whichever agent CLIs you want to run, already authenticated. The installer needs no
-Python packages. It installs skill links, not cmux, agent CLIs, accounts, hooks, or services.
+Python packages. It installs skill links and fetches the pinned LifeOS CMUX package; cmux,
+Bun, agent CLIs, accounts, hooks and services are separate.
 Agents use their own authentication and billing; this does not promise free or unlimited use.
 
 ```sh
 git clone https://github.com/mj-deving/shared-agent-harness.git
 cd shared-agent-harness
 python3 install.py                     # preview; no writes or downloads
-python3 install.py --apply             # CMUX skill, both harnesses
+python3 install.py --apply             # CMUX adapter, LifeOS source, both harnesses
 python3 install.py --check             # exit 0 when selected files/links match
 ```
 
-Start a fresh Claude Code or Codex session and ask it to locate `cmux-orchestrate`, read the
-skill, and explain its launch/verification steps without launching anything. Existing disabled-skill
+Run `python3 resolve.py lifeos CMUX` to get the canonical `SKILL.md` and `Tools/cmux.ts`
+paths, then `bun <returned-script-path> --help` to check the wrapper without launching a
+team. The visible `cmux-orchestrate` adapter tells both harnesses to read that original
+package and use the returned script path. Start a fresh Claude Code or Codex session and ask
+it to locate `cmux-orchestrate`, read the canonical CMUX skill, and explain its steps without
+launching anything. Existing disabled-skill
 settings still apply; this installer never changes them. Then try:
 
 > Use cmux-orchestrate to open one visible Claude Code worker in this project's scratch
@@ -52,10 +57,12 @@ python3 install.py --skills cmux-orchestrate autoreview behavior-validator --app
 python3 install.py --skills cmux-orchestrate autoreview behavior-validator --check
 ```
 
-The first selected external skill fetches one pinned `agent-skills` checkout into
+The minimal profile fetches the pinned LifeOS checkout for the actual CMUX skill and script.
+The first selected `agent-skills` skill fetches one pinned checkout into
 `.sources/agent-skills/<commit>/`. Both harnesses link to that same checkout. The manifest
 records the owner, public source URL, immutable revision and skill path. The bundled CMUX
-skill lives directly in this repository. Keep this checkout at a stable location.
+adapter lives directly in this repository; its required canonical skill and script stay in
+LifeOS. Keep this checkout at a stable location.
 
 Already have the exact canonical source? Reuse it rather than cloning another copy:
 
@@ -120,6 +127,11 @@ The installer:
 - records its own links in a local `.state/links.json` receipt;
 - serializes its own writers and rolls back link changes on handled errors;
 - leaves source checkouts and unrelated files intact during uninstall.
+
+The canonical package includes BootTeam, AgentRace, Fleet and Monitor. `boot-team` creates
+shells but leaves provider launch to you; `race` needs a reviewed `--cmd` to run real agents.
+The script's optional voice and personal fleet paths need their documented LifeOS services or
+configuration.
 
 This is a personal workstation installer, not a hostile-user security boundary or a
 power-loss-safe package manager. If interrupted between link creation and receipt writing,

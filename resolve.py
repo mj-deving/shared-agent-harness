@@ -20,8 +20,14 @@ def resolve(owner, name):
     leaf = root / catalog[name] / 'SKILL.md'
     if not leaf.resolve().is_relative_to(root.resolve()) or not leaf.is_file():
         raise ValueError(f'Missing or escaping canonical leaf: {name}')
-    return {'owner': owner, 'revision': source['revision'], 'skill': name,
-            'path': str(leaf), 'source_root': str(root)}
+    result = {'owner': owner, 'revision': source['revision'], 'skill': name,
+              'path': str(leaf), 'source_root': str(root)}
+    if owner == 'lifeos' and name == 'CMUX':
+        script = leaf.parent / 'Tools/cmux.ts'
+        if not script.is_file() or not script.resolve().is_relative_to(root.resolve()):
+            raise ValueError('Missing or escaping canonical CMUX script')
+        result['script'] = str(script)
+    return result
 
 
 if __name__ == '__main__':

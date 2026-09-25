@@ -20,6 +20,20 @@ class InstallerTests(unittest.TestCase):
         shutil.copytree(PROJECT, self.repo, ignore=shutil.ignore_patterns('.sources', '.state', '.git', '__pycache__'))
         self.home = self.base / 'home'
         self.home.mkdir()
+        self.lifeos = self.base / 'lifeos-fixture'
+        cmux = self.lifeos / 'LifeOS/install/skills/CMUX'
+        (cmux / 'Tools').mkdir(parents=True)
+        (cmux / 'SKILL.md').write_text('---\nname: CMUX\ndescription: Fixture\n---\n')
+        (cmux / 'Tools/cmux.ts').write_text('console.log("fixture")\n')
+        subprocess.run(['git', 'init', '-q', str(self.lifeos)], check=True)
+        subprocess.run(['git', '-C', str(self.lifeos), 'add', '.'], check=True)
+        subprocess.run(['git', '-C', str(self.lifeos), '-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
+                        '-c', 'commit.gpgsign=false', '-c', 'core.hooksPath=/dev/null', 'commit', '-qm', 'fixture'], check=True)
+        pin = subprocess.check_output(['git', '-C', str(self.lifeos), 'rev-parse', 'HEAD'], text=True).strip()
+        manifest_path = self.repo / 'sources.json'
+        manifest = json.loads(manifest_path.read_text())
+        manifest['sources']['lifeos'].update(url=str(self.lifeos), revision=pin)
+        manifest_path.write_text(json.dumps(manifest))
 
     def run_cli(self, *args, expected=0):
         p = subprocess.run([sys.executable, str(self.repo / 'install.py'), '--home', str(self.home), *args],
@@ -48,6 +62,17 @@ class InstallerTests(unittest.TestCase):
         self.run_cli('--uninstall', '--apply')
         self.assertTrue(all(not p.is_symlink() for p in self.links()))
         self.assertTrue((self.repo / 'skills/cmux-orchestrate/SKILL.md').exists())
+
+    def test_minimal_install_resolves_canonical_cmux_skill_and_script(self):
+        self.run_cli('--apply')
+        result = subprocess.run([sys.executable, str(self.repo / 'resolve.py'), 'lifeos', 'CMUX'],
+                                text=True, capture_output=True, check=True)
+        resolved = json.loads(result.stdout)
+        self.assertEqual(Path(resolved['path']).read_text(),
+                         (self.lifeos / 'LifeOS/install/skills/CMUX/SKILL.md').read_text())
+        self.assertEqual(Path(resolved['script']).read_text(),
+                         (self.lifeos / 'LifeOS/install/skills/CMUX/Tools/cmux.ts').read_text())
+        self.run_cli('--check')
 
     def test_foreign_directory_blocks_whole_plan(self):
         foreign = self.links()[1]

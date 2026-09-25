@@ -32,7 +32,10 @@
   "skills": {
     "cmux-orchestrate": {
       "owner": "shared-agent-harness",
-      "path": "skills/cmux-orchestrate"
+      "path": "skills/cmux-orchestrate",
+      "requires": [
+        "lifeos"
+      ]
     },
     "autoreview": {
       "owner": "agent-skills",
@@ -91,6 +94,7 @@
   },
   "catalog": {
     "lifeos": {
+      "CMUX": "LifeOS/install/skills/CMUX",
       "FirstPrinciples": "LifeOS/install/skills/FirstPrinciples",
       "SystemsThinking": "LifeOS/install/skills/SystemsThinking",
       "Science": "LifeOS/install/skills/Science",

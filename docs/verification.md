@@ -50,3 +50,21 @@ was changed for the installer tests. Temporary cmux workspaces were closed by ex
 
 This extends the installation and source-resolution proof. It does not establish full execution
 of all 40 workflows or runtime discovery in every harness.
+
+## Canonical CMUX correction
+
+- The minimal profile now requires the immutable LifeOS source, whose original `CMUX/SKILL.md`,
+  `Tools/cmux.ts`, four workflows and `DESIGN.md` remain unchanged in the same checkout.
+- `resolve.py lifeos CMUX` returns both the canonical skill and script paths, including for a
+  reused source checkout. The portable adapter uses those paths in either harness.
+- This adds one CMUX source entry alongside the 15 other routed leaves; the catalog still
+  counts CMUX once among its 40 capabilities.
+- Fifteen isolated installer tests pass, including a fixture test for source fetching, skill and
+  script resolution, and zero-change recheck. A separate temporary-home install fetched the
+  exact public LifeOS pin, resolved both actual files, passed a zero-change recheck, and ran
+  the unchanged `cmux.ts --help` under Bun successfully.
+- Script help and terminal control do not prove the team/race/fleet/monitor modes, optional
+  Pulse voice, personal SSH fleet or provider task completion.
+- At this pin, `boot-team` creates labeled shells without launching providers; `race` sends
+  a readiness print unless `--cmd` is supplied. These modes need explicit provider commands
+  and readback before an agent-running claim.

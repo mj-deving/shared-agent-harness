@@ -11,13 +11,13 @@ A selection across the full working stack, not just LifeOS and not a usage-frequ
 | Impeccable + Watch | 2 | Native/vendor installer |
 | **Total** | **40** | **26 through this installer; 14 opt-in through their owners** |
 
-The LifeOS selection includes BPE, Evals and ten thinking/research/specification workflows. The extended profile exposes 26 capabilities through 13 skill folders per harness. Optional suites may install more modules than our selected shortlist. All sources retain their ownership and license.
+The LifeOS selection includes CMUX plus BPE, Evals and ten thinking/research/specification workflows. CMUX is counted once in the 40, under the shared foundation. The extended profile exposes 26 capabilities through 13 skill folders per harness. Optional suites may install more modules than our selected shortlist. All sources retain their ownership and license.
 
 ## Shared foundation
 
 | # | Skill | Why it is here | Dependencies / limits |
 |---|---|---|---|
-| 1 | [cmux-orchestrate](../skills/cmux-orchestrate/SKILL.md) | Visible cross-harness workers. | macOS cmux, installed/authenticated worker CLIs, authorized socket access. |
+| 1 | [cmux-orchestrate](../skills/cmux-orchestrate/SKILL.md) → [LifeOS CMUX](https://github.com/danielmiessler/LifeOS/tree/be9e8ef889f00a29f4fd677dee4772fdf32e07ce/LifeOS/install/skills/CMUX) | Visible cross-harness workers using the actual pinned skill, workflows and `cmux.ts`. | Bun, macOS cmux, authenticated worker CLIs and socket access; optional voice/fleet modes need LifeOS setup. |
 | 2 | [autoreview](https://github.com/mj-deving/agent-skills/tree/7d4d219626c46d3c1d664a5a3e2206ed2cfd623e/skills/autoreview) | Independent code review through supported agent CLIs. | Reviewer CLI and secret-scanner prerequisites. |
 | 3 | [behavior-validator](https://github.com/mj-deving/agent-skills/tree/7d4d219626c46d3c1d664a5a3e2206ed2cfd623e/skills/behavior-validator) | Test observable behavior against a written contract. | Runnable target and suitable CLI/browser access; source-blind context. |
 | 4 | [handoff](https://github.com/mj-deving/agent-skills/tree/7d4d219626c46d3c1d664a5a3e2206ed2cfd623e/skills/handoff) | Prepare a self-contained agent handoff. | Clipboard integration is optional; a handoff does not itself authorize action. |
@@ -29,7 +29,7 @@ The LifeOS selection includes BPE, Evals and ten thinking/research/specification
 
 ## LifeOS
 
-Install the `lifeos` router or use `--profile curated`. Use it by name, for example “Use lifeos FirstPrinciples to challenge these assumptions.” The router reads one pinned body and translates runtime-specific behavior. Full LifeOS services are not installed.
+Install the `lifeos` router or use `--profile curated`. Use it by name, for example “Use lifeos FirstPrinciples to challenge these assumptions.” The router reads one pinned body and translates runtime-specific behavior. The CMUX adapter uses the same LifeOS checkout for the original CMUX package. Full LifeOS services are not installed.
 
 | # | Workflow | Use |
 |---|---|---|
